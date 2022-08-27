@@ -21,6 +21,7 @@ void init_scheduler(void)
 	usrloopthread.old_priority = -1;
 	usrloopthread.status = THREAD_READY;
 	usrloopthread.offset = -1;
+	usrloopthread.highest_mutex = 0;
 	scheduler.rthread = &usrloopthread;
 
 	// Initialize Scheduling Queues
@@ -56,6 +57,7 @@ void init_scheduler(void)
 		struct Thread* t = &threads[i];
 		t->offset = i;
 		t->sp_base = 0x20000000 - STACK_SIZE*i;
+		t->highest_mutex = 0;
 		thread_entries[i].value = t;
 		thread_entries[i].next = &thread_entries[(i+1)];
 		thread_entries[i].entry_type = VALUE_ENTRY;

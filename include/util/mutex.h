@@ -20,14 +20,14 @@ struct Mutex {
 
 struct MutexManager {
 	struct Queue free;
-	struct Queue used;
+	unsigned long used_mutexes;
 };
 
 void mutex_init(void);
 void uart_mutexes(void);
 struct Mutex* create_mutex(void* addr);
 unsigned char delete_mutex(struct Mutex* m);
-void lock_mutex(struct Mutex* m);
+unsigned char lock_mutex(struct Mutex* m);
 void unlock_mutex(struct Mutex* m);
 
 #endif

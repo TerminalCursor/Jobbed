@@ -25,7 +25,7 @@ struct Thread {
 	void* mptr;
 	unsigned long offset;
 	unsigned char old_priority;
-	unsigned char c_reserved;
+	unsigned char highest_mutex;
 	unsigned short s_reserved;
 };
 
